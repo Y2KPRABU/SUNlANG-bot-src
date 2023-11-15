@@ -3,6 +3,7 @@
 
 name: Build and deploy ASP.Net Core app to Azure Web App - sundarbot
 env:
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
   AZURE_WEBAPP_NAME: sundarbot    # set this to your application's name
   AZURE_BUILD_PATH: './GitBuild'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '6.0.x'             # set this to the dot net version to use
@@ -24,7 +25,8 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
-          include-prerelease: true
+          cache: true
+
 
       - name: Build with dotnet
         run: dotnet build  ./QnABotWithMSI.sln --configuration Debug
