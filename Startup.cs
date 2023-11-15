@@ -19,6 +19,8 @@ namespace Microsoft.BotBuilderSamples
     {
         public Startup(IConfiguration configuration)
         {
+                                   Trace.WriteLine("Inside Starup of botbuilder") ;
+
             Configuration = configuration;
         }
 
@@ -72,7 +74,7 @@ namespace Microsoft.BotBuilderSamples
                 {
                     endpoints.MapControllers();
                 });
-
+    
             // app.UseHttpsRedirection();
         }
     }

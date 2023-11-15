@@ -13,6 +13,8 @@ namespace Microsoft.BotBuilderSamples
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+                                    Trace.WriteLine("Initialized CreateHostBuilder") ;
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -21,9 +23,10 @@ namespace Microsoft.BotBuilderSamples
                 {
                     webBuilder.ConfigureLogging((logging) =>
                     {
-Debug.WriteLine("Initialized CreateHostBuilder") ;
+                        Trace.WriteLine("Initialized CreateHostBuilder") ;
                        logging.AddDebug();
                         logging.AddConsole();
+                        
                     });
                     webBuilder.UseStartup<Startup>();
                 });

@@ -12,10 +12,10 @@ namespace Microsoft.BotBuilderSamples
     {
         public BotServices(IConfiguration configuration)
         {
-            Debug.WriteLine("Initializing Bot Services " ) ;
+            Trace.WriteLine("Initializing Bot Services " ) ;
 
             InitializeService(configuration);
-            Debug.WriteLine("Initializing Bot Services Done" ) ;
+            Trace.WriteLine("Initializing Bot Services Done" ) ;
         }
 
         public IQnAMakerClient QnAMakerService { get; private set; }
@@ -31,7 +31,7 @@ namespace Microsoft.BotBuilderSamples
             var LanguageEndpointHostName = configuration["LanguageEndpointHostName"];
             if (!String.IsNullOrEmpty(LanguageEndpointHostName) && !String.IsNullOrEmpty(LanguageEndpointKey) && !String.IsNullOrEmpty(ProjectName))
             {
-               Debug.WriteLine("Initializing CustomQuestionAnswering maker  Services " ) ;
+               Trace.WriteLine("Initializing CustomQuestionAnswering maker  Services " ) ;
                 QnAMakerService = new CustomQuestionAnswering(new QnAMakerEndpoint
                 {
                     KnowledgeBaseId = ProjectName,
@@ -39,12 +39,12 @@ namespace Microsoft.BotBuilderSamples
                     EndpointKey = LanguageEndpointKey,
                     QnAServiceType = ServiceType.Language
                 });
-             Debug.WriteLine("Initializing CustomQuestionAnswering maker  Services Done" ) ;
+             Trace.WriteLine("Initializing CustomQuestionAnswering maker  Services Done" ) ;
 
             }
             else if (!String.IsNullOrEmpty(QnAEndpointHostName) && !String.IsNullOrEmpty(QnAEndpointKey) && !String.IsNullOrEmpty(QnAKnowledgebaseId))
             {
-                               Debug.WriteLine("Initializing Simple QA service  maker  Services " ) ;
+                               Trace.WriteLine("Initializing Simple QA service  maker  Services " ) ;
 
                 QnAMakerService = new QnAMaker(new QnAMakerEndpoint
                 {
@@ -53,12 +53,12 @@ namespace Microsoft.BotBuilderSamples
                     EndpointKey = QnAEndpointKey,
                     QnAServiceType = ServiceType.QnAMaker
                 });
-                             Debug.WriteLine("Initializing Simple QA service  maker  Services Done" ) ;
+                             Trace.WriteLine("Initializing Simple QA service  maker  Services Done" ) ;
 
             }
             else
             {
-                 Debug.WriteLine("Error in Configuration " ) ;
+                 Trace.WriteLine("Error in Configuration " ) ;
 
                 throw new ArgumentException("Please fill in the configuration parameters.");
             }

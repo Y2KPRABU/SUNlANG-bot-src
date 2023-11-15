@@ -23,23 +23,23 @@ namespace Microsoft.BotBuilderSamples.Controllers
 
         public BotController(IBotFrameworkHttpAdapter adapter, IBot bot)
         {
-            Debug.WriteLine("Initialize BotController started") ;
+            Trace.WriteLine("Initialize BotController started") ;
 
             Adapter = adapter;
             Bot = bot;
-                        Debug.WriteLine("Initialized BotController Completed") ;
+                        Trace.WriteLine("Initialized BotController Completed") ;
 
         }
 
         [HttpPost]
         public async Task PostAsync()
         {
-                        Debug.WriteLine("Received a Post Message " + Request.ToString()) ;
+                        Trace.WriteLine("Received a Post Message " + Request.ToString()) ;
 
             // Delegate the processing of the HTTP POST to the adapter.
             // The adapter will invoke the bot.
             await Adapter.ProcessAsync(Request, Response, Bot);
-                                    Debug.WriteLine("Completed a Post Message " + Request.ToString()) ;
+                                    Trace.WriteLine("Completed a Post Message " + Request.ToString()) ;
 
         }
     }
