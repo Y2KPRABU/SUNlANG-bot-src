@@ -30,10 +30,13 @@ jobs:
 
       - name: Build with dotnet
         run: dotnet build  ./QnABotWithMSI.sln --configuration Debug
+      - name: Display structure of Built files
+        run: ls -R
 
       - name: dotnet publish
         run: dotnet publish ./QnABotWithMSI.sln -c Debug -o ${{env.AZURE_BUILD_PATH}}/${{env.AZURE_WEBAPP_NAME}}
-
+      - name: Display structure of Published files
+        run: ls -R
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
