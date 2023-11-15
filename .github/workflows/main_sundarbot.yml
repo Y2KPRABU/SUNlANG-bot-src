@@ -31,7 +31,7 @@ jobs:
       - name: Build with dotnet
         run: dotnet build  ./QnABotWithMSI.sln --configuration Debug
       - name: Display structure of Built files
-        run: ls -R
+        run: ls -R --hide=.nuget/**/*
 
       - name: dotnet publish
         run: dotnet publish ./QnABotWithMSI.sln -c Debug -o ${{env.AZURE_BUILD_PATH}}/${{env.AZURE_WEBAPP_NAME}}
