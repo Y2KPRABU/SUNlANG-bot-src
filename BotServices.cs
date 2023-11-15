@@ -5,14 +5,17 @@ using Microsoft.Bot.Builder.AI.QnA;
 using Microsoft.Bot.Builder.AI.QnA.Models;
 using Microsoft.Extensions.Configuration;
 using System;
-
+using System.Diagnostics;
 namespace Microsoft.BotBuilderSamples
 {
     public class BotServices : IBotServices
     {
         public BotServices(IConfiguration configuration)
         {
+            Debug.WriteLine("Initializing Bot Services " ) ;
+
             InitializeService(configuration);
+            Debug.WriteLine("Initializing Bot Services Done" ) ;
         }
 
         public IQnAMakerClient QnAMakerService { get; private set; }
@@ -28,6 +31,7 @@ namespace Microsoft.BotBuilderSamples
             var LanguageEndpointHostName = configuration["LanguageEndpointHostName"];
             if (!String.IsNullOrEmpty(LanguageEndpointHostName) && !String.IsNullOrEmpty(LanguageEndpointKey) && !String.IsNullOrEmpty(ProjectName))
             {
+               Debug.WriteLine("Initializing CustomQuestionAnswering maker  Services " ) ;
                 QnAMakerService = new CustomQuestionAnswering(new QnAMakerEndpoint
                 {
                     KnowledgeBaseId = ProjectName,
@@ -35,9 +39,13 @@ namespace Microsoft.BotBuilderSamples
                     EndpointKey = LanguageEndpointKey,
                     QnAServiceType = ServiceType.Language
                 });
+             Debug.WriteLine("Initializing CustomQuestionAnswering maker  Services Done" ) ;
+
             }
             else if (!String.IsNullOrEmpty(QnAEndpointHostName) && !String.IsNullOrEmpty(QnAEndpointKey) && !String.IsNullOrEmpty(QnAKnowledgebaseId))
             {
+                               Debug.WriteLine("Initializing Simple QA service  maker  Services " ) ;
+
                 QnAMakerService = new QnAMaker(new QnAMakerEndpoint
                 {
                     KnowledgeBaseId = QnAKnowledgebaseId,
@@ -45,9 +53,13 @@ namespace Microsoft.BotBuilderSamples
                     EndpointKey = QnAEndpointKey,
                     QnAServiceType = ServiceType.QnAMaker
                 });
+                             Debug.WriteLine("Initializing Simple QA service  maker  Services Done" ) ;
+
             }
             else
             {
+                 Debug.WriteLine("Error in Configuration " ) ;
+
                 throw new ArgumentException("Please fill in the configuration parameters.");
             }
         }

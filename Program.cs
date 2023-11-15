@@ -4,6 +4,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -20,7 +21,8 @@ namespace Microsoft.BotBuilderSamples
                 {
                     webBuilder.ConfigureLogging((logging) =>
                     {
-                        logging.AddDebug();
+Debug.WriteLine("Initialized CreateHostBuilder") ;
+                       logging.AddDebug();
                         logging.AddConsole();
                     });
                     webBuilder.UseStartup<Startup>();
