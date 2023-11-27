@@ -76,7 +76,7 @@ call :ExecuteCmd dotnet restore "QnABotWithMSI.sln"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build and publish
-call :ExecuteCmd dotnet publish "QnABotWithMSI.csproj" --output "%DEPLOYMENT_TEMP%" --configuration Release
+call :ExecuteCmd dotnet publish "QnABotWithMSI.csproj" --output "%DEPLOYMENT_TEMP%" --configuration Debug
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 3. KuduSync

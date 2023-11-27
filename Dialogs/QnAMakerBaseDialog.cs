@@ -24,7 +24,7 @@ namespace Microsoft.BotBuilderSamples.Dialogs
         private readonly IBotServices _services;
         private readonly IConfiguration _configuration;
 
-        public const string ActiveLearningCardTitle = "Did you mean:";
+        public  const string ActiveLearningCardTitle = "Did you mean:";
         public const string ActiveLearningCardNoMatchText = "None of the above.";
         public const string ActiveLearningCardNoMatchResponse = "Thanks for the feedback.";
         private readonly string DefaultAnswer = "";

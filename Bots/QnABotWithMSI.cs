@@ -24,7 +24,7 @@ namespace Microsoft.BotBuilderSamples.Bots
         {
 
             var welcomeMsg = configuration["DefaultWelcomeMessage"];
-            if (!string.IsNullOrWhiteSpace(welcomeMsg))
+            if (!string.IsNullOrEmpty(welcomeMsg))
                 defaultWelcome = welcomeMsg;
             ConversationState = conversationState;
             UserState = userState;

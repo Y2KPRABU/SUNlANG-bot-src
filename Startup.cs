@@ -55,7 +55,7 @@ namespace Microsoft.BotBuilderSamples
 
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.AddTransient<IBot, QnABotWithMSI<RootDialog>>();
-
+            //BotComponent.Add(new BotComponent());
             ComponentRegistration.Add(new DialogsComponentRegistration());
         }
 
